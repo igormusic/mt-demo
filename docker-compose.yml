@@ -1,0 +1,40 @@
+version: '3'
+services:
+  mq:
+    image: icr.io/ibm-messaging/mq:latest
+    environment:
+      LICENSE: accept
+      MQ_QMGR_NAME: MQ1
+      MQ_APP_PASSWORD: passw0rd
+      MQ_ADMIN_PASSWORD: passw0rd
+      MQ_ENABLE_METRICS: 'false'
+    ports:
+      - '1414:1414'
+      - '9443:9443'
+    volumes:
+      - ./mq-data:/mnt/mqm
+
+  activemq:
+    image: symptoma/activemq:latest
+    ports:
+      - '61616:61616'
+      - '8161:8161'
+    environment:
+      ACTIVEMQ_DISALLOW_WEBCONSOLE: false
+      ACTIVEMQ_USERNAME: myactivemquser
+      ACTIVEMQ_PASSWORD: myactivemquserpass
+      ACTIVEMQ_WEBADMIN_USERNAME: admin
+      ACTIVEMQ_WEBADMIN_PASSWORD: passw0rd
+    volumes:
+      - ./data:/var/lib/activemq
+
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      SA_PASSWORD: StrongPassword123
+      ACCEPT_EULA: 'Y'
+      MSSQL_PID: Developer
+    ports:
+      - '1433:1433'
+    volumes:
+      - ./sql-data:/var/opt/mssql/data

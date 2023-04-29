@@ -1,0 +1,12 @@
+app:
+    mock:
+        customers:
+            count: 1000
+        generator:
+            threads: 3
+            mindelay: 100
+            maxdelay: 1000
+            senderbic: ROYCCAT2
+    activemq:
+        broker-url: tcp://localhost:61616
+
