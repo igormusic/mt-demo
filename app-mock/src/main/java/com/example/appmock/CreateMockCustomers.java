@@ -27,7 +27,7 @@ public class CreateMockCustomers implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        Faker faker = new Faker(new Locale("en-US"));
+        Faker faker = new Faker(new Locale("en_CA"));
 
         var customers = new ArrayList<Customer>();
 
@@ -35,13 +35,14 @@ public class CreateMockCustomers implements ApplicationRunner {
 
             var customer = new Customer();
 
-            String name = truncateString(faker.company().name(), 35);
-            String addressLine1 = faker.address().streetAddressNumber() + " " + faker.address().streetName();
-            String addressLine2 = faker.address().secondaryAddress();
-            String addressLine3 = truncateString(faker.address().cityName() + " - " + faker.address().stateAbbr(),34);
+            var address = faker.address();
 
-            String country = truncateString(faker.address().country(), 35);
-            String postalCode = getPostalCode(faker);
+            String name = truncateString(faker.company().name(), 35);
+            String addressLine1 = address.streetAddressNumber() + " " + faker.address().streetName();
+            String addressLine2 = address.secondaryAddress();
+            String addressLine3 = truncateString(address.cityName() + " - " + address.stateAbbr(), 34);
+            String country = "Canada";
+            String postalCode = address.stateAbbr() + " " + address.zipCode().toUpperCase();
 
             customer.setName(name);
             customer.setAddressLine1(addressLine1);
@@ -77,14 +78,6 @@ public class CreateMockCustomers implements ApplicationRunner {
         return str;
     }
 
-    private static String getPostalCode(Faker faker) {
-        try {
-            return faker.address().zipCodeByState(faker.address().stateAbbr());
-        }
-        catch (Exception e) {
-            return faker.address().zipCode();
-        }
 
-    }
 
 }

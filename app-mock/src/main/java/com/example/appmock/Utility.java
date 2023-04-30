@@ -1,7 +1,11 @@
 package com.example.appmock;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
 
@@ -26,6 +30,21 @@ public class Utility {
         }
         return sb.toString();
     }
+
+    public static String getDaysFromNow(int daysToAdd) {
+        LocalDate currentDate = LocalDate.now();
+
+        // Add 2 days to the current date
+        LocalDate daysFromNow = currentDate.plusDays(daysToAdd);
+
+        return daysFromNow.format(DateTimeFormatter.ofPattern("yyMMdd"));
+    }
+
+    public static BigDecimal getRandomDecimal(BigDecimal min, BigDecimal max) {
+        Random random = new Random();
+        return min.add(BigDecimal.valueOf(random.nextDouble()).multiply(max.subtract(min))).setScale(2, RoundingMode.HALF_UP);
+    }
+
     public static <T> T getRandomRecord(List<T> list) {
 
         if (list == null || list.isEmpty()) {

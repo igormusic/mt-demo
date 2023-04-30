@@ -9,17 +9,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 
+import static com.example.appmock.config.JmsConfig.LMS_REQUEST_REPORT_MT920_RQ;
+
 @Component
 @Slf4j
 public class Mt920Generator extends MessageGenerator {
 
     private final CustomerRepository customerRepository;
-    private final JmsTemplate jmsTemplate920Rq;
+    private final JmsTemplate jmsTemplate;
 
 
-    public Mt920Generator(CustomerRepository customerRepository, JmsTemplate jmsTemplate920Rq) {
+    public Mt920Generator(CustomerRepository customerRepository, JmsTemplate jmsTemplate) {
         this.customerRepository = customerRepository;
-        this.jmsTemplate920Rq = jmsTemplate920Rq;
+        this.jmsTemplate = jmsTemplate;
     }
 
     @Override
@@ -41,10 +43,9 @@ public class Mt920Generator extends MessageGenerator {
 
         String message = mt.message();
 
-        jmsTemplate920Rq.convertAndSend(message);
+        jmsTemplate.convertAndSend(LMS_REQUEST_REPORT_MT920_RQ, message);
 
         log.info(message);
-
     }
 
 

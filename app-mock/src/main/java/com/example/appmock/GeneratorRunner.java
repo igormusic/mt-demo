@@ -38,7 +38,6 @@ public class GeneratorRunner implements Runnable {
                     executorService.execute(mt103Generator);
                     break;
                 case 2:
-                    // code for task 3
                     executorService.execute(mt920Generator);
                     break;
             }
