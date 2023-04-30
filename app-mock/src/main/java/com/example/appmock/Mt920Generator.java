@@ -1,8 +1,8 @@
 package com.example.appmock;
 
 import com.example.appmock.model.CustomerRepository;
-import com.prowidesoftware.swift.model.field.Field20;
 import com.prowidesoftware.swift.model.field.Field12;
+import com.prowidesoftware.swift.model.field.Field20;
 import com.prowidesoftware.swift.model.field.Field25;
 import com.prowidesoftware.swift.model.mt.mt9xx.MT920;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +43,7 @@ public class Mt920Generator extends MessageGenerator {
 
         jmsTemplate920Rq.convertAndSend(message);
 
-        log.info("MT920 {} sent to queue", message);
+        log.info(message);
 
     }
 

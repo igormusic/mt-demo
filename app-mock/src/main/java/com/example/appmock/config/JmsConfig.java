@@ -1,13 +1,12 @@
 package com.example.appmock.config;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.core.JmsTemplate;
 
 import javax.jms.*;
-
-import org.apache.activemq.ActiveMQConnectionFactory;
-import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.support.destination.BeanFactoryDestinationResolver;
 
 @Configuration
 public class JmsConfig {
@@ -95,8 +94,6 @@ public class JmsConfig {
 
         return jmsTemplate;
     }
-
-
 
 }
 

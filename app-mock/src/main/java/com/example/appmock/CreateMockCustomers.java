@@ -51,7 +51,7 @@ public class CreateMockCustomers implements ApplicationRunner {
             customer.setCountryAndCode2(country);
 
 
-            for(int j = 1; j < faker.random().nextInt(1,5); j++) {
+            for (int j = 1; j < faker.random().nextInt(3, 6); j++) {
                 var account = new Account();
 
                 account.setAccountNumber(faker.finance().iban());

@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;trustServerCertificate=true;database=payments;schema=messages
+    username: sa
+    password: StrongPassword123
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    database-platform: org.hibernate.dialect.SQLServerDialect
+
+app:
+  active-mq:
+    broker-url: tcp://localhost:61616
+    user: myactivemquser
+    password: myactivemquserpass
+  ibm-mq:
+    queue-manager: MQ1
+    channel: DEV.APP.SVRCONN
+    hostname: localhost
+    port: 1414
+    userid: app
+    password: passw0rd
+
+
+
+

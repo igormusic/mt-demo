@@ -27,6 +27,11 @@ public class Utility {
         return sb.toString();
     }
     public static <T> T getRandomRecord(List<T> list) {
+
+        if (list == null || list.isEmpty()) {
+            return null;
+        }
+
         int index = new Random().nextInt(list.size());
         return list.get(index);
     }
