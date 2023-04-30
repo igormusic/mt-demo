@@ -14,7 +14,7 @@ https://localhost:9443/ibmmq/console/login.html
 
 Username: admin Password: passw0rd
 
-In IBM MQ Console, create following queues:
+In IBM MQ Console, create following local queues:
 
 | Queue Name                     |
 |--------------------------------|
@@ -22,7 +22,15 @@ In IBM MQ Console, create following queues:
 | SWIFT.REQUEST.REPORT.MT920.RQ  |
 | SWIFT.OUTGOING.WIRE.MT103.RQ   |
 
+When this is done:
+1. click on Manage MQ1
+2. click on queue > Actions > View Configuration > Security
+3. click on Add
+4. Enter username: app
+5. Expand Admin Access > check select all
+6. Click on Save
 
+Repeat for each queue
 
 ## Active MQ
 
