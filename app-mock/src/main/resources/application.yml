@@ -3,9 +3,9 @@ app:
         customers:
             count: 1000
         generator:
-          threads: 16
+            threads: 16
             mindelay: 100
-          maxdelay: 500
+            maxdelay: 500
             senderbic: ROYCCAT2
     activemq:
         broker-url: tcp://localhost:61616
